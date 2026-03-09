@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ironclad Solus - Advanced Manufacturing Solutions</title>
+  <meta name="description" content="Ironclad Solus (Solus Society) specializes in precision machining, bespoke component fabrication, industrial automation, and R&D for next-generation manufacturing in New York.">
+  <link rel="icon" href="favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: rgb(228, 26, 60);
+      --primary-light-color: rgb(231, 125, 143);
+      --primary-dark-color: rgb(159, 18, 42);
+      --secondary-color: rgb(202, 102, 52);
+      --accent-color: rgb(49, 230, 200);
+      --background-color: rgb(255, 255, 255);
+      --text-color: rgb(15, 15, 15);
+      --glass-background: rgba(255, 255, 255, 0.7);
+      --border-radius: 24px;
+      --icon-container-radius: 50%;
+      --section-spacing: 1.5rem;
+      --heading-font: 'Crimson Pro', serif;
+      --body-font: 'Space Grotesk', monospace;
+      --heading-weight: 700;
+      --body-weight: 300;
+    }
+
+    body {
+      font-family: var(--body-font);
+      font-weight: var(--body-weight);
+      color: var(--text-color);
+      background-color: var(--background-color);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--heading-font);
+      font-weight: var(--heading-weight);
+      color: var(--primary-dark-color);
+    }
+
+    .btn-brutalist {
+      background: linear-gradient(90deg, var(--primary-dark-color) 0%, var(--primary-color) 100%);
+      color: var(--background-color);
+      border: 3px solid var(--primary-dark-color);
+      padding: 0.8rem 2rem;
+      font-weight: var(--heading-weight);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 0; 
+      transition: all 0.3s ease-in-out;
+      box-shadow: 5px 5px 0px var(--accent-color);
+    }
+
+    .btn-brutalist:hover {
+      background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-dark-color) 100%);
+      color: var(--background-color);
+      border-color: var(--accent-color);
+      box-shadow: 2px 2px 0px var(--secondary-color);
+      transform: translate(3px, 3px);
+    }
+    
+    .navbar {
+      background-color: var(--primary-dark-color);
+      border-bottom: 3px solid var(--accent-color);
+    }
+    .navbar-brand {
+      color: var(--background-color) !important;
+      font-family: var(--heading-font);
+      font-weight: var(--heading-weight);
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+    .navbar-nav .nav-link {
+      color: var(--background-color) !important;
+      font-family: var(--body-font);
+      font-weight: var(--body-weight);
+      text-transform: uppercase;
+      padding: 0.75rem 1rem;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover {
+      color: var(--accent-color) !important;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .section-spacing {
+      padding-top: calc(var(--section-spacing) * 2);
+      padding-bottom: calc(var(--section-spacing) * 2);
+    }
+
+    .card-glass {
+      background: var(--glass-background);
+      border: 4px solid var(--primary-color);
+      border-radius: var(--border-radius);
+      backdrop-filter: blur(10px);
+      box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1);
+      transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .card-glass:hover {
+      border-color: var(--accent-color);
+      transform: translateY(-5px);
+      box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.15);
+    }
+
+    .icon-container {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 80px;
+        background-color: var(--primary-light-color);
+        border-radius: var(--icon-container-radius);
+        border: 2px solid var(--primary-dark-color);
+        margin-bottom: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .icon-container:hover {
+        background-color: var(--accent-color);
+    }
+
+    .icon-container svg {
+        fill: var(--background-color);
+        width: 48px;
+        height: 48px;
+    }
+
+    .brutalist-border-bottom {
+      border-bottom: 5px solid var(--accent-color);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+      display: inline-block;
+    }
+
+    .img-zoom-hover {
+      transition: transform 0.6s ease-in-out;
+    }
+    .img-zoom-hover:hover {
+      transform: scale(1.03);
+    }
+
+    .hero-image-offset {
+      position: relative;
+      background-color: var(--primary-color); 
+      padding: 1rem; 
+      border: 4px solid var(--primary-dark-color);
+      box-shadow: -15px 15px 0px var(--accent-color);
+    }
+
+    .hero-image-offset img {
+      display: block; 
+      width: 100%;
+      height: auto;
+      transform: translate(-15px, -15px); /* Offset the image within its container */
+      box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+    }
+
+    .form-control, .form-select {
+        border-radius: 0;
+        border: 2px solid var(--primary-dark-color);
+        background-color: var(--background-color);
+        color: var(--text-color);
+        padding: 0.75rem 1rem;
+        font-family: var(--body-font);
+    }
+    .form-control:focus, .form-select:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 0.25rem rgba(49, 230, 200, 0.25);
+        background-color: var(--background-color);
+        color: var(--text-color);
+    }
+    .form-label {
+        font-family: var(--heading-font);
+        font-weight: var(--heading-weight);
+        color: var(--primary-dark-color);
+        margin-bottom: 0.5rem;
+    }
+
+    .footer {
+      background-color: var(--primary-dark-color);
+      color: var(--background-color);
+      border-top: 3px solid var(--accent-color);
+    }
+    .footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer a:hover {
+      color: var(--primary-light-color);
+    }
+
+    /* Cookie Consent */
+    #cookieConsent {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(15, 15, 15, 0.9);
+        color: var(--background-color);
+        padding: 1rem;
+        display: none; /* Hidden by default */
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        border-top: 3px solid var(--accent-color);
+    }
+    #cookieConsent button {
+        background-color: var(--accent-color);
+        color: var(--text-color);
+        border: none;
+        padding: 0.5rem 1.5rem;
+        cursor: pointer;
+        font-weight: var(--heading-weight);
+        border-radius: 0;
+        transition: background-color 0.3s ease;
+    }
+    #cookieConsent button:hover {
+        background-color: var(--primary-light-color);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg ">
+      <div class="container">
+        <a class="navbar-brand" href="#">Ironclad Solus</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          Menu 
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="var(--background-color)" class="bi bi-list">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+          </svg>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#services">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#research">R&D</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+<main>
+<style>
+  #privacy-policy-section {
+    padding-top: 7rem;
+  }
+</style>
+<section id="privacy-policy-section">
+    <h2 style="font-size: 1.875rem; font-weight: 700; margin-bottom: 2rem;">Privacy Policy of Solus Society</h2>
+
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+        Welcome to Solus Society. This Privacy Policy describes how Solus Society, located at Jackie Robinson Parkway, New York, New York, 11207, USA, collects, uses, and discloses information when you visit and interact with our online platform. We are committed to protecting your privacy and ensuring transparency in our data practices, in compliance with applicable data protection laws, including the General Data Protection Regulation (GDPR).
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Information We Collect</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6;">
+        We collect various types of information to provide and improve our services, which include precision machining, bespoke component fabrication, industrial automation integration, and R&D for next-gen manufacturing.
+    </p>
+    <ul style="list-style: disc; padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            <strong>Personal Data:</strong> When you express interest in our services, contact us, or register on our site, we may collect personally identifiable information such as your name, email address, phone number, company name, and job title. This information is typically gathered when you fill out contact forms, request information, or engage in direct communication with our team.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            <strong>Usage Data:</strong> We automatically collect information that your browser sends whenever you visit our site or when you access the service by or through a mobile device. This usage data may include your computer's Internet Protocol address (IP address), browser type, browser version, the pages of our site that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers, and other diagnostic data.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            <strong>Cookies and Tracking Technologies:</strong> We use cookies and similar tracking technologies to track activity on our site and hold certain information. Cookies are files with a small amount of data which may include an anonymous unique identifier. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our service.
+        </li>
+    </ul>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">How We Use Your Information</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6;">
+        Solus Society uses the collected data for various purposes:
+    </p>
+    <ul style="list-style: disc; padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            To provide and maintain our industrial solutions and services.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            To notify you about changes to our services or offerings.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            To allow you to participate in interactive features of our site when you choose to do so.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            To provide customer support and respond to your inquiries.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            To gather analysis or valuable information so that we can improve our site and services.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            To monitor the usage of our site for performance and security purposes.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            To detect, prevent, and address technical issues.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            To communicate with you about marketing, promotions, and other information related to our advanced manufacturing solutions that may be of interest to you, based on your consent where required by law.
+        </li>
+    </ul>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Legal Basis for Processing Personal Data Under GDPR</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6;">
+        If you are from the European Economic Area (EEA), Solus Society's legal basis for collecting and using the personal information described in this Privacy Policy depends on the Personal Data we collect and the specific context in which we collect it.
+    </p>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+        We may process your Personal Data because:
+    </p>
+    <ul style="list-style: disc; padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            We need to perform a contract with you.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            You have given us permission to do so.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            The processing is in our legitimate interests and it's not overridden by your rights.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            For payment processing purposes.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            To comply with the law.
+        </li>
+    </ul>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Disclosure of Your Information</h3>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+        We may disclose your Personal Data in the good faith belief that such action is necessary to:
+    </p>
+    <ul style="list-style: disc; padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            Comply with a legal obligation.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            Protect and defend the rights or property of Solus Society.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            Prevent or investigate possible wrongdoing in connection with our site.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            Protect the personal safety of users of our site or the public.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            Protect against legal liability.
+        </li>
+    </ul>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Security of Data</h3>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+        The security of your data is important to us. We strive to use commercially acceptable means to protect your Personal Data, including various technical and organizational measures. However, no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we endeavor to use industry-standard practices, we cannot guarantee its absolute security.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Your Data Protection Rights Under GDPR</h3>
+    <p style="font-size: 1rem; margin-bottom: 1rem; line-height: 1.6;">
+        If you are a resident of the European Economic Area (EEA), you have certain data protection rights. Solus Society aims to take reasonable steps to allow you to correct, amend, delete, or limit the use of your Personal Data.
+    </p>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+        In certain circumstances, you have the following data protection rights:
+    </p>
+    <ul style="list-style: disc; padding-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            <strong>The right to access:</strong> You have the right to request copies of your personal data.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            <strong>The right to rectification:</strong> You have the right to request that we correct any information you believe is inaccurate or complete information you believe is incomplete.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            <strong>The right to erasure:</strong> You have the right to request that we erase your personal data, under certain conditions.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            <strong>The right to restrict processing:</strong> You have the right to request that we restrict the processing of your personal data, under certain conditions.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            <strong>The right to object to processing:</strong> You have the right to object to our processing of your personal data, under certain conditions.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            <strong>The right to data portability:</strong> You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.
+        </li>
+        <li style="font-size: 1rem; margin-bottom: 0.75rem; line-height: 1.6;">
+            <strong>The right to withdraw consent:</strong> You also have the right to withdraw your consent at any time where Solus Society relied on your consent to process your personal information.
+        </li>
+    </ul>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+        Please note that we may ask you to verify your identity before responding to such requests.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Service Providers</h3>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+        We may employ third party companies and individuals to facilitate our site, provide the site on our behalf, perform site-related services, or assist us in analyzing how our site is used. These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Links to Other Sites</h3>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+        Our site may contain links to other sites that are not operated by us. If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Children's Privacy</h3>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+        Our site does not address anyone under the age of 18 ("Children"). We do not knowingly collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your Children have provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from children without verification of parental consent, we take steps to remove that information from our servers.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Changes to This Privacy Policy</h3>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+        We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. We encourage you to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+    </p>
+
+    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Contact Us</h3>
+    <p style="font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.6;">
+        If you have any questions about this Privacy Policy, please contact us:
+    </p>
+    <ul style="list-style: none; padding-left: 0; margin-bottom: 1.5rem;">
+        <li style="font-size: 1rem; margin-bottom: 0.5rem; line-height: 1.6;">
+            <strong>By Mail:</strong> Jackie Robinson Parkway, New York, New York, 11207, USA
+        </li>
+    </ul>
+
+</section>
+</main>
+<footer class="footer py-4">
+    <div class="container text-center">
+      <p class="mb-1">&copy; 2024 Ironclad Solus. Implemented by Solus Society. All Rights Reserved.</p>
+      <p class="mb-0">
+        <a href="./privacy.html" class="me-3">Privacy Directory</a>
+        <a href="./tos.html">Terms of Fabrication</a>
+      </p>
+    </div>
+  </footer>
+
+  <div id="cookieConsent" class="d-flex align-items-center justify-content-between">
+    <p class="mb-0 me-3" style="font-size: 0.9rem;">This site deploys essential cookies to ensure optimal functionality. By clicking "Accept", you consent to our use of these vital computational modules.</p>
+    <button id="acceptCookies">Accept</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const cookiePrefix = 'consent_'; 
+      const cookieName = cookiePrefix + Math.random().toString(36).substring(2, 15); // Unique cookie name
+      const cookieConsent = document.getElementById('cookieConsent');
+      const acceptCookiesBtn = document.getElementById('acceptCookies');
+
+      function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+
+      function setCookie(name, value, days) {
+        let expires = "";
+        if (days) {
+          const date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+      }
+
+      if (!getCookie(cookieName)) {
+        cookieConsent.style.display = 'flex';
+      }
+
+      acceptCookiesBtn.addEventListener('click', function() {
+        setCookie(cookieName, 'accepted', 365); // Consent for 1 year
+        cookieConsent.style.display = 'none';
+      });
+
+      // Simple scroll-based fade-in effect for sections
+      const sections = document.querySelectorAll('section');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          } else {
+             // Optional: reset opacity when out of view, or keep it to 1
+             // entry.target.style.opacity = '0'; 
+             // entry.target.style.transform = 'translateY(20px)';
+          }
+        });
+      }, {
+        threshold: 0.1, // Trigger when 10% of the section is visible
+        rootMargin: '0px 0px -50px 0px' // Adjust sensitivity
+      });
+
+      sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+        observer.observe(section);
+      });
+    });
+  </script>
+</body>
+</html>
